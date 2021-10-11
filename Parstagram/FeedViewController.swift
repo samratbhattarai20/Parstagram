@@ -27,7 +27,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        let query = PFQuery(className:  "Posts")
+        let query = PFQuery(className: "Posts")
         query.limit = 20
         
         query.findObjectsInBackground {(posts, error) in
@@ -48,7 +48,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let post = posts[indexPath.row]
         
         let user = post["author"] as! PFUser
-        //cell.userNameLabel.text = user.username
+        user.fetchInBackground()
+        
+        //cell.userNameLabel.text = user.username!
         
         cell.captionLabel.text = (post["caption"] as! String)
         

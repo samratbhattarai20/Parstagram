@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-        //usernameField.becomeFirstResponder()
+        usernameField.becomeFirstResponder()
         // Do any additional setup after loading the view.
     }
     @IBAction func onSignIn(_ sender: Any) {
@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
             if user != nil {
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
-                print("Error: \(error?.localizedDescription)")
+                print("Error: \(String(describing: error?.localizedDescription))")
             }
         }
         
@@ -34,8 +34,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func onSignUp(_ sender: Any) {
         let user = PFUser()
-        user.username = usernameField.text
-        user.password = passwordField.text
+        user.username = self.usernameField.text
+        user.password = self.passwordField.text
+        
         
         user.signUpInBackground { (success, error) in
             if success {
