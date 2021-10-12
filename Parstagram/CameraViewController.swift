@@ -14,11 +14,13 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentField: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         // Do any additional setup after loading the view.
     }
+    
     
     @IBAction func onSubmitButton(_ sender: Any) {
         let post = PFObject(className: "Posts")
@@ -35,6 +37,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             if success {
                 self.dismiss(animated: true, completion: nil)
                 print("Saved!")
+                
             } else {
                 print("Error!")
             }

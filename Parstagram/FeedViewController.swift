@@ -12,8 +12,8 @@ import AlamofireImage
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
     var posts = [PFObject]()
+    let myRefreshControl = UIRefreshControl() // pull to refresh
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,19 +21,27 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+        
+        // pull to refresh
+        myRefreshControl.addTarget(self, action: #selector(viewDidAppear), for: .valueChanged)
+        tableView.refreshControl = myRefreshControl
+        self.tableView.rowHeight = UITableView.automaticDimension
+       
     }
     
     // to show the recent post,, to refresh the home page after you've added a new post
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         
         let query = PFQuery(className: "Posts")
+        query.includeKey("author")
         query.limit = 20
         
         query.findObjectsInBackground {(posts, error) in
             if posts != nil {
                 self.posts = posts!
                 self.tableView.reloadData()
+                self.myRefreshControl.endRefreshing()
             }
         }
     }
@@ -49,8 +57,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let user = post["author"] as! PFUser
         user.fetchInBackground()
-        
-        //cell.userNameLabel.text = user.username!
+        cell.userNameLabel.text = user.username!
         
         cell.captionLabel.text = (post["caption"] as! String)
         

@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
                 print("Error: \(String(describing: error?.localizedDescription))")
             }
         }
-        
     }
     
     @IBAction func onSignUp(_ sender: Any) {
