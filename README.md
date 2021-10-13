@@ -22,5 +22,11 @@ The following **bonus** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+- User sees app icon in home screen and styled launch screen.
+- User can sign up to create a new account.
+- User can take a photo, add a caption, and post it to the server.
+<img src='https://user-images.githubusercontent.com/73952095/137049036-a163e965-c05f-444c-8c46-4171322211e1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<img src='https://user-images.githubusercontent.com/73952095/136731049-ee3e698d-6bf3-4e8c-bfdd-e4fbd6107b45.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+- User can log in. 
+- User can view the last 20 posts.
+<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
