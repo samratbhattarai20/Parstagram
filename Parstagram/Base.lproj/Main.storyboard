@@ -144,6 +144,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="fCT-ZX-ORk">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="3et-Uf-ZWp">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="onLogOut:" destination="cyT-SG-RVg" id="Ssg-Dz-EZz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="insta_camera_btn" id="8ha-gB-Oc2" userLabel="insta camera button">
                             <connections>
                                 <segue destination="fBR-T7-LEa" kind="presentation" id="MN8-4Z-ENx"/>
