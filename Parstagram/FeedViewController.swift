@@ -34,6 +34,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidAppear(animated)
         
         let query = PFQuery(className: "Posts")
+        //let query = PFQuery(className: "newPosts")
         query.includeKey("author")
         query.limit = 20
         
